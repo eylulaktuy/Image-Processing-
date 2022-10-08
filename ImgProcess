@@ -1,0 +1,49 @@
+import cv2
+import matplotlib.pyplot as plt
+import seaborn as sns      # for using kdeplot
+import numpy as np
+import warnings
+warnings.simplefilter(action="ignore", category=FutureWarning)        # ignoring for futurewarning
+
+def grab_frame(cap):
+    ret, frame = cap.read()
+    return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#reading image with opencv and managing colors
+
+cap1 = cv2.VideoCapture(0)
+#choosing image's resource with opencv 
+
+
+i=0
+for i in range(10):
+# deciding time stops in paranthes
+    x = np.random.rand(40)
+    x = x * 300
+    y = np.random.rand(40)
+    y = y * 300
+#numpy takes coordinates randomly so determineting coordinates manually in parantheses
+#numpy gives tha values between 0 and 1 so multiplying 300 is gonna give bigger values
+
+    abc = 0
+
+    for abc in range(10):
+        #time for moving 
+        im1 = plt.imshow(grab_frame(cap1))
+        #combining matplotlib and image
+        plt.subplot(1, 1, 1)
+        #creates 1 to 1 graphics
+        plt.xlim(0, 640)
+        plt.ylim(480)
+        #constrains the x and y values so the image doesn't overflow
+
+
+
+        sns.kdeplot(x, y, shade=True, cmap='YlOrRd', levels=10, alpha=.5, antialiased=True, thresh=0.5)
+
+
+        plt.axis('off')
+        #Removes number values in the x and y planes
+        plt.pause(0.001)
+        #allows the graphic drawing to be stopped so that the new cycle can begin
+        plt.delaxes()
+        #deletes the previously drawn heatmap
