@@ -1,4 +1,4 @@
 # Image-Processing-
-Image processing in python
+Real time image processing using python
 
-Reading pixel information with python, marking this information with mapping on the camera image in real time
+Reading pixel information using python, marking this information with mapping on the camera image in real time
